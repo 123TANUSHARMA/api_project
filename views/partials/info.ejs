@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticker Information Display</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+    <%- include('header.ejs') %>
+
+        <main class="container">
+            <section id="ticker-info-section">
+                <h1 class="page-title">Ticker Information Display</h1>
+                <div class="ticker-info-form">
+                    <form method="post" action="/info">
+                        <label for="ticker">Enter Ticker:</label>
+                        <input type="text" id="ticker" name="ticker" placeholder="Enter ticker symbol">
+                        <button type="submit" class="btn-submit">Trading Pair Information</button>
+                    </form>
+                </div>
+                <div class="ticker-info">
+                    <% if (base_currency) { %>
+                        <h2>Trading Pair Information:</h2>
+                        <p><strong>Base Currency:</strong>
+                            <%= base_currency %>
+                        </p>
+                        <p><strong>Counter Currency:</strong>
+                            <%= counter_currency %>
+                        </p>
+                        <p><strong>Minimum Price Increment:</strong>
+                            <%= min_price_increment %>
+                        </p>
+                        <p><strong>Minimum Order Size:</strong>
+                            <%= min_order_size %>
+                        </p>
+                        <p><strong>Maximum Order Size:</strong>
+                            <%= max_order_size %>
+                        </p>
+                        <p><strong>Lot Size:</strong>
+                            <%= lot_size %>
+                        </p>
+                        <p><strong>Status:</strong>
+                            <%= status %>
+                        </p>
+                        <% if (auction_price || auction_size || auction_time) { %>
+                            <h3>Auction Information:</h3>
+                            <p><strong>Auction Price:</strong>
+                                <%= auction_price %>
+                            </p>
+                            <p><strong>Auction Size:</strong>
+                                <%= auction_size %>
+                            </p>
+                            <p><strong>Auction Time:</strong>
+                                <%= auction_time %>
+                            </p>
+                            <% } %>
+                                <p><strong>Imbalance:</strong>
+                                    <%= imbalance %>
+                                </p>
+                                <% } %>
+                </div>
+            </section>
+        </main>
+
+        <%- include('footer.ejs') %>
+</body>
+
+</html>

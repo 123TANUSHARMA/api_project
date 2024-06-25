@@ -1,0 +1,398 @@
+.div1 {
+    background-image: url("/images/new1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 600px;
+    width: 100%;
+    color: white;
+    font-family: calibri;
+}
+
+.display {
+    margin-top: 50px;
+}
+
+.fw {
+    margin-top: 30px;
+}
+
+.lead {
+    margin-top: 50px;
+}
+
+.slide {
+    height: 700px;
+    width: 100%;
+}
+
+.marketing {
+    margin-top: 10px;
+}
+
+.carousel-inner img {
+    width: 100%;
+    /* Ensures the images fill the width of their container */
+    height: 600px;
+}
+
+.carousel {
+    width: 100vw;
+    /* Sets the width of the carousel to 100% of the viewport width */
+    margin-left: calc(-50vw + 50%);
+    /* Centers the carousel horizontally */
+}
+
+.carousel-item {
+    min-height: 600px;
+    /* Ensures the carousel has a minimum height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Reset default margins and paddings */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Body styles */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    /* Light grey background */
+    color: #333;
+    /* Dark grey text color */
+    line-height: 1.6;
+}
+
+
+/* Header styles */
+
+header {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.page-title {
+    color: #007bff;
+    /* Blue heading color */
+    margin-bottom: 20px;
+}
+
+
+/* Main content styles */
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    /* White background */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Soft shadow effect */
+}
+
+
+/* Form styles */
+
+.ticker-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    max-width: 300px;
+    margin-right: 10px;
+}
+
+.btn-submit {
+    padding: 10px 20px;
+    background-color: #007bff;
+    /* Blue button background */
+    color: #ffffff;
+    /* White button text color */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+    /* Darker blue on hover */
+}
+
+
+/* Displayed data styles */
+
+.ticker-data {
+    text-align: center;
+}
+
+.ticker-info {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #f1f1f1;
+    /* Light grey background for data */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    /* Soft shadow effect */
+}
+
+.ticker-info h2 {
+    color: #007bff;
+    /* Blue heading color */
+    margin-bottom: 10px;
+}
+
+.ticker-info p {
+    margin-bottom: 8px;
+}
+
+
+/* Reset default margins and paddings */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Body styles */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    /* Light grey background */
+    color: #333;
+    /* Dark grey text color */
+    line-height: 1.6;
+}
+
+
+/* Header styles */
+
+header {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.page-title {
+    color: #007bff;
+    /* Blue heading color */
+    margin-bottom: 20px;
+}
+
+
+/* Main content styles */
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    /* White background */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Soft shadow effect */
+}
+
+
+/* Form styles */
+
+.order-book-form {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.order-book-form label {
+    font-weight: bold;
+}
+
+.order-book-form input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    margin-right: 10px;
+}
+
+.btn-submit {
+    padding: 10px 20px;
+    background-color: #007bff;
+    /* Blue button background */
+    color: #ffffff;
+    /* White button text color */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+    /* Darker blue on hover */
+}
+
+
+/* Table styles */
+
+.order-book-table {
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table,
+th,
+td {
+    border: 1px solid #ccc;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+    font-size: 14px;
+}
+
+th {
+    background-color: #f2f2f2;
+    /* Light grey background for table header */
+}
+
+
+/* Reset default margins and paddings */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Body styles */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    /* Light grey background */
+    color: #333;
+    /* Dark grey text color */
+    line-height: 1.6;
+}
+
+
+/* Header styles */
+
+header {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.page-title {
+    color: #007bff;
+    /* Blue heading color */
+    margin-bottom: 20px;
+}
+
+
+/* Main content styles */
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    /* White background */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Soft shadow effect */
+}
+
+
+/* Form styles */
+
+.ticker-info-form {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.ticker-info-form label {
+    font-weight: bold;
+}
+
+.ticker-info-form input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    margin-right: 10px;
+}
+
+.btn-submit {
+    padding: 10px 20px;
+    background-color: #007bff;
+    /* Blue button background */
+    color: #ffffff;
+    /* White button text color */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+    /* Darker blue on hover */
+}
+
+
+/* Ticker information styles */
+
+.ticker-info {
+    text-align: center;
+}
+
+.ticker-info h2,
+.ticker-info h3 {
+    color: #007bff;
+    /* Blue heading color */
+    margin-top: 20px;
+}
+
+.ticker-info p {
+    margin-bottom: 10px;
+}

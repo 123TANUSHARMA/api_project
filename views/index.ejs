@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Your Passions</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+    <%- include('partials/header.ejs') %>
+        <div class="div1 position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
+            <div class="col-md-6 p-lg-5 mx-auto my-5">
+                <h1 class="display-2">Be early to the future of finance</h1>
+                <p class="lead">Enhance Your Trading Strategy with CryptoInfoHub</p>
+            </div>
+        </div>
+
+        <div class="container marketing">
+
+            <!-- Three columns of text below the carousel -->
+            <div class="row">
+                <div class="col-lg-4 text-center">
+                    <img src="./images/btc.jpeg" class="rounded-circle" width="200" height="200" alt="Image 1">
+                    <h2 class="fw-normal">Bitcoin</h2>
+                    <p>Bitcoin, introduced in 2009 by an anonymous creator.It allows secure transactions without a central authority, appealing for its transparency and limited supply, making.</p>
+                    <p><a class="btn btn-secondary" href="https://www.bing.com/ck/a?!&&p=797693ec5a003988JmltdHM9MTcxOTE4NzIwMCZpZ3VpZD0zZjNkYTI5Zi02YmQ3LTYwOGYtMGE2OS1iMGI3NmEyNTYxMmEmaW5zaWQ9NTIyOQ&ptn=3&ver=2&hsh=3&fclid=3f3da29f-6bd7-608f-0a69-b0b76a25612a&psq=bitcoin&u=a1aHR0cHM6Ly9iaXRjb2luLm9yZy8&ntb=1">View details »</a></p>
+                </div>
+                <!-- /.col-lg-4 -->
+                <div class="col-lg-4 text-center">
+                    <img src="./images/eth.webp" class="rounded-circle" width="200" height="200" alt="Image 2">
+                    <h2 class="fw-normal">Ethereum</h2>
+                    <p>Ethereum, launched in 2015, is a decentralized blockchain platform enabling smart contracts and decentralized applications (DApps). </p>
+                    <p><a class="btn btn-secondary" href="https://www.bing.com/ck/a?!&&p=0790a5c82607b861JmltdHM9MTcxOTE4NzIwMCZpZ3VpZD0zZjNkYTI5Zi02YmQ3LTYwOGYtMGE2OS1iMGI3NmEyNTYxMmEmaW5zaWQ9NTIzNQ&ptn=3&ver=2&hsh=3&fclid=3f3da29f-6bd7-608f-0a69-b0b76a25612a&psq=ethereum&u=a1aHR0cHM6Ly9ldGhlcmV1bS5vcmcvZW4v&ntb=1">View details »</a></p>
+                </div>
+                <!-- /.col-lg-4 -->
+                <div class="col-lg-4 text-center">
+                    <img src="./images/ripple.webp" class="rounded-circle" width="200" height="200" alt="Image 3">
+                    <h2 class="fw-normal">Ripple</h2>
+                    <p>Ripple aims to revolutionize cross-border transactions, making them more efficient and accessible globally.</p>
+                    <p><a class="btn btn-secondary" href="https://www.bing.com/ck/a?!&&p=6e417599b6f8c7ecJmltdHM9MTcxOTE4NzIwMCZpZ3VpZD0zZjNkYTI5Zi02YmQ3LTYwOGYtMGE2OS1iMGI3NmEyNTYxMmEmaW5zaWQ9NTIzNA&ptn=3&ver=2&hsh=3&fclid=3f3da29f-6bd7-608f-0a69-b0b76a25612a&psq=ripple&u=a1aHR0cHM6Ly9yaXBwbGUuY29tLw&ntb=1">View details »</a></p>
+                </div>
+                <!-- /.col-lg-4 -->
+            </div>
+            <!-- /.row -->
+
+            <!-- START THE FEATURETTES -->
+            <h1 class="head text-center my-5">Explore Cryptocurrency Information</h1>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading fw-normal lh-1">Ticker Data Display</h2>
+                    <p class="lead">Track cryptocurrency performance with real-time data including symbol, 24-hour price, volume, and last trade price. Helps users monitor specific cryptocurrencies over time.</p>
+                    <a href="/submit" class="btn btn-secondary">Ticker data</a>
+                </div>
+                <div class="col-md-5">
+                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="./images/ticker-data.jpeg" alt="Descriptive Alt Text" width="500" height="500">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7 order-md-2">
+                    <h2 class="featurette-heading fw-normal lh-1">Order Book Visualization</h2>
+                    <p class="lead">View bid and ask data for cryptocurrencies, showing prices, quantities, and numbers in a structured format. Provides insights into market depth and trading sentiment.</p>
+                    <a href="/order" class="btn btn-secondary">Order book</a>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="./images/order-book.png" alt="Descriptive Alt Text" width="500" height="500">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading fw-normal lh-1">Ticker Information Display</h2>
+                    <p class="lead">Access detailed cryptocurrency information by entering its ticker symbol. Displays base currency, counter currency, minimum price increment, order sizes, status, auction details, and imbalance. Facilitates informed trading decisions
+                        with comprehensive data.</p>
+                    <a href="/info" class="btn btn-secondary">Ticker info</a>
+                </div>
+                <div class="col-md-5">
+                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="./images/ticker-info.jpeg" alt="Descriptive Alt Text" width="500" height="500">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+            <!-- /END THE FEATURETTES -->
+
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+        <%- include('partials/footer.ejs') %>
+</body>
+
+</html>
