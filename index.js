@@ -1,321 +1,146 @@
 import express from "express";
-import bodyParser from "body-parser";
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from 'url';
+import axios from "axios";
 
 const app = express();
 const port = 3000;
-
-// __dirname setup
-const __filename = fileURLToPath(
-    import.meta.url);
-const __dirname = path.dirname(__filename);
+const API_URL = "https://api.blockchain.com/v3/exchange";
+const yourAPIKey = "f3181ed3-ec7e-488d-85be-7382a9d65118";
 
 app.use(express.static("public"));
-app.use(bodyParser.urlencoded({ extended: true }));
 
-let arr = [];
+// Middleware to parse form data
+app.use(express.urlencoded({ extended: true }));
 
-// Load existing blogs from the creation directory at startup
-fs.readdir(path.join(__dirname, 'creation'), (err, files) => {
-    if (err) {
-        console.error('Error reading directory:', err);
-    } else {
-        arr = files.map(file => path.parse(file).name); // Assuming each file is named as `title.html`
-        console.log('Existing blogs loaded:', arr);
-    }
-});
+// Middleware to set common headers
+const headers = {
+    'Accept': 'application/json',
+    'X-API-Token': yourAPIKey
+};
 
+// Route to render the initial form
 app.get("/", (req, res) => {
     res.render("index.ejs");
 });
-
-app.post("/blog", (req, res) => {
-    res.render("create.ejs");
+app.get("/feature", (req, res) => {
+    res.render("partials/feature.ejs");
 });
-app.get("/update", (req, res) => {
-    res.render("update.ejs");
+app.get("/about", (req, res) => {
+    res.render("partials/about.ejs");
 });
-app.get("/delete", (req, res) => {
-    res.render("delete.ejs", { arr });
+app.get("/faq", (req, res) => {
+    res.render("partials/faq.ejs");
 });
-/*app.post("/update", (req, res) => {
-    const oldTitle = req.body["otitle"]; // Assuming you have an input field for oldTitle in update.ejs
-    const newTitle = req.body["ntitle"];
-    const content = req.body["content"];
+app.get("/submit", (req, res) => {
+    res.render("partials/submit.ejs", {
+        symbol: "",
+        price: "",
+        volume: "",
+        lastprice: "",
+    });
+});
+app.post("/submit", async(req, res) => {
+    try {
+        const ticker = req.body.ticker;
 
-    const oldFilePath = path.join(__dirname, 'creation', `${oldTitle}.html`);
-    const newFilePath = path.join(__dirname, 'creation', `${newTitle}.html`);
+        // Fetch ticker data
+        const tickerResponse = await axios.get(`${API_URL}/tickers/${ticker}`, { headers });
 
-    fs.readFile(oldFilePath, 'utf8', (err, data) => {
-        if (err) {
-            console.error('Error reading HTML file:', err);
-            res.sendStatus(500);
-        } else {
-            const htmlContent =
-                ` <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>${newTitle}</title>
-            <style>
-                body {
-                    font-family: Arial, sans-serif;
-                    line-height: 1.6;
-                    max-width: 800px;
-                    margin: 0 auto;
-                    padding: 20px;
-                    background-color: #f0f0f0;
-                    color: #333;
-                }
-                .container {
-                    background-color: #fce4ec;
-                    padding: 20px;
-                    border-radius: 8px;
-                    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-                    margin-top: 20px;
-                }
-                h1 {
-                    color: #d81b60;
-                    text-align: center;
-                }
-                p {
-                    color: #666;
-                    text-align: justify;
-                }
-            </style>
-        </head>
-        <body>
-            <div class="container">
-                <h1>${newTitle}</h1>
-                <p>${content}</p>
-            </div>
-        </body>
-        </html>
-        `;
+        // Render data on index.ejs template
+        res.render("partials/submit.ejs", {
+            symbol: tickerResponse.data.symbol,
+            price: tickerResponse.data.price_24h,
+            volume: tickerResponse.data.volume_24h,
+            lastprice: tickerResponse.data.last_trade_price
 
-            fs.writeFile(newFilePath, htmlContent, (err) => {
-                if (err) {
-                    console.error('Error updating HTML file:', err);
-                    res.sendStatus(500);
-                } else {
-                    console.log(`HTML file ${newFilePath}
-                        has been updated successfully.`);
-
-                    // After successfully writing new file, delete the old file
-                    fs.unlink(oldFilePath, (err) => {
-                        if (err) {
-                            console.error('Error deleting old HTML file:', err);
-                            res.sendStatus(500);
-                        } else {
-                            console.log(`Old HTML file ${oldFilePath}
-                                has been deleted successfully.`);
-                            arr = arr.map(blog => (blog === oldTitle ? newTitle : blog));
-                            res.render("createdblog.ejs", { arr });
-                        } // fs unlink
-                    });
-                }   //fs wrie=te end
-            });
-        }   // first if else end
-    });// readfile ended
-});*/
-app.post("/update", (req, res) => {
-    const oldTitle = req.body["otitle"];
-    const newTitle = req.body["ntitle"];
-    const content = req.body["content"];
-
-    if (!oldTitle) {
-        console.error('Error: Old title is undefined or empty');
-        return res.sendStatus(400);
-    }
-
-    const oldFilePath = path.join(__dirname, 'creation', `${oldTitle}.html`);
-    const newFilePath = path.join(__dirname, 'creation', `${newTitle}.html`);
-
-    // Check if new title is different and not empty
-    if (newTitle && newTitle !== oldTitle && !arr.includes(newTitle)) {
-        // Update arr with new title
-        arr = arr.map(blog => (blog === oldTitle ? newTitle : blog));
-
-        const htmlContent = `
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>${newTitle}</title>
-            <style>
-                body {
-                    font-family: Arial, sans-serif;
-                    line-height: 1.6;
-                    max-width: 800px;
-                    margin: 0 auto;
-                    padding: 20px;
-                    background-color: #f0f0f0;
-                    color: #333;
-                }
-                .container {
-                    background-color: #fce4ec;
-                    padding: 20px;
-                    border-radius: 8px;
-                    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-                    margin-top: 20px;
-                }
-                h1 {
-                    color: #d81b60;
-                    text-align: center;
-                }
-                p {
-                    color: #666;
-                    text-align: justify;
-                }
-            </style>
-        </head>
-        <body>
-            <div class="container">
-                <h1>${newTitle}</h1>
-                <p>${content}</p>
-            </div>
-        </body>
-        </html>
-        `;
-
-        // Write new file
-        fs.writeFile(newFilePath, htmlContent, (err) => {
-            if (err) {
-                console.error('Error creating HTML file:', err);
-                return res.sendStatus(500);
-            }
-
-            console.log(`HTML file '${newFilePath}' has been created successfully.`);
-        });
-        // Delete old file
-        fs.unlink(oldFilePath, (err) => {
-            if (err) {
-                console.error('Error deleting HTML file:', err);
-                return res.sendStatus(500);
-            }
-
-            console.log(`HTML file '${oldFilePath}' has been deleted successfully.`);
-
-            // Render response after successful update
-            res.render("createdblog.ejs", { arr });
         });
 
-    } else {
-        // Render response when no update is needed
-        res.render("createdblog.ejs", { arr });
+    } catch (error) {
+        console.error(error);
+        res.status(404).send(error.message);
     }
 });
 
-
-app.post("/delete", (req, res) => {
-    const title = req.body["title"];
-    if (!title) {
-        console.error('Error: Title is undefined or empty');
-        res.sendStatus(400);
-        return;
-    }
-
-    const filePath = path.join(__dirname, 'creation', `${ title }.html`);
-
-    fs.unlink(filePath, (err) => {
-        if (err) {
-            console.error('Error deleting HTML file:', err);
-            res.sendStatus(500);
-        } else {
-            console.log(`HTML file ${filePath}
-                has been deleted successfully.`);
-            arr = arr.filter(blog => blog !== title);
-            res.render("createdblog.ejs", { arr });
-        }
+app.get("/order", (req, res) => {
+    res.render("partials/order.ejs", {
+        bpx: [],
+        bqty: [],
+        bnum: [],
+        apx: [],
+        aqty: [],
+        anum: []
     });
 });
 
+app.post("/order", async(req, res) => {
+    try {
+        const ticker = req.body.ticker;
 
+        // Fetch L3 order book data
+        const l3Response = await axios.get(`${API_URL}/l3/${ticker}`, { headers });
 
-
-app.get("/faq", (req, res) => {
-    res.render("faq.ejs");
-});
-
-app.get("/about", (req, res) => {
-    res.render("about.ejs");
-});
-app.post("/submit", (req, res) => {
-    const title = req.body["title"];
-    const content = req.body["content"];
-    if (!arr.includes(title) && title) { // Ensure title is not empty
-        arr.push(title);
-
-        const htmlContent = `
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>${title}</title>
-            <style>
-                body {
-                    font-family: Arial, sans-serif;
-                    line-height: 1.6;
-                    max-width: 800px;
-                    margin: 0 auto;
-                    padding: 20px;
-                    background-color: #f0f0f0;
-                    color: #333;
-                }
-                .container {
-                    background-color: #fce4ec;
-                    padding: 20px;
-                    border-radius: 8px;
-                    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-                    margin-top: 20px;
-                }
-                h1 {
-                    color: #d81b60;
-                    text-align: center;
-                }
-                p {
-                    color: #666;
-                    text-align: justify;
-                }
-            </style>
-        </head>
-        <body>
-            <div class="container">
-                <h1>${title}</h1>
-                <p>${content}</p>
-            </div>
-        </body>
-        </html>
-        `;
-
-        const filePath = path.join(__dirname, 'creation', `${title}.html`);
-
-        fs.writeFile(filePath, htmlContent, (err) => {
-            if (err) {
-                console.error('Error creating HTML file:', err);
-                res.sendStatus(500);
-            } else {
-                console.log(`HTML file '${filePath}' has been created successfully.`);
-                res.render("createdblog.ejs", { arr });
-            }
+        // Render data on index.ejs template
+        res.render("partials/order.ejs", {
+            bpx: l3Response.data.bids.map(bid => bid.px),
+            bqty: l3Response.data.bids.map(bid => bid.qty),
+            bnum: l3Response.data.bids.map(bid => bid.num),
+            apx: l3Response.data.asks.map(ask => ask.px),
+            aqty: l3Response.data.asks.map(ask => ask.qty),
+            anum: l3Response.data.asks.map(ask => ask.num)
         });
-    } else {
-        res.render("createdblog.ejs", { arr });
+
+    } catch (error) {
+        console.error(error);
+        res.status(404).send(error.message);
     }
 });
-app.use('/creation', express.static(path.join(__dirname, 'creation')));
-
-app.get("/features", (req, res) => {
-    res.render("features.ejs");
+app.get("/info", (req, res) => {
+    res.render("partials/info.ejs", {
+        base_currency: "",
+        counter_currency: "",
+        min_price_increment: "",
+        min_order_size: "",
+        max_order_size: "",
+        lot_size: "",
+        status: "",
+        auction_price: "",
+        auction_size: "",
+        auction_time: "",
+        imbalance: "",
+    });
 });
-// Serve static files from the creation directory
+
+app.post("/info", async(req, res) => {
+    try {
+        const ticker = req.body.ticker;
+
+        // Fetch ticker information data
+        const tickerResponse = await axios.get(`${API_URL}/symbols/${ticker}`, { headers });
+
+        // Render data on index.ejs template
+        res.render("partials/info.ejs", {
+
+            base_currency: tickerResponse.data.base_currency,
+            counter_currency: tickerResponse.data.counter_currency,
+            min_price_increment: tickerResponse.data.min_price_increment,
+            min_order_size: tickerResponse.data.min_order_size,
+            max_order_size: tickerResponse.data.max_order_size,
+            lot_size: tickerResponse.data.lot_size,
+            status: tickerResponse.data.status,
+            auction_price: tickerResponse.data.auction_price,
+            auction_size: tickerResponse.data.auction_size,
+            auction_time: tickerResponse.data.auction_time,
+            imbalance: tickerResponse.data.imbalance,
+
+        });
+
+    } catch (error) {
+        console.error(error);
+        res.status(404).send(error.message);
+    }
+});
 
 
+// Start the server
 app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
+    console.log(`Server is running on port ${port}`);
 });

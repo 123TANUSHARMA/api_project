@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - CryptoInfoHub</title>
+    <style>
+        /* Reset default margins and paddings */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* Body styles */
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f5ff;
+            /* Light blue background */
+            color: #333;
+            /* Dark grey text color */
+            line-height: 1.6;
+            padding: 20px;
+        }
+        /* Header styles */
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            color: #007bff;
+            /* Blue heading color */
+            margin-bottom: 10px;
+        }
+        /* Main section styles */
+        
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        /* FAQ section styles */
+        
+        #faq {
+            background-color: #ffffff;
+            /* White background for FAQ section */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Soft shadow effect */
+        }
+        
+        #faq h2 {
+            color: #007bff;
+            /* Blue heading color */
+            margin-bottom: 20px;
+        }
+        /* Article styles */
+        
+        article {
+            margin-bottom: 20px;
+        }
+        
+        article h3 {
+            color: #0056b3;
+            /* Dark blue heading color */
+            margin-bottom: 10px;
+        }
+        
+        article p {
+            color: #666;
+            /* Medium grey text color */
+            line-height: 1.5;
+        }
+        
+        article a {
+            color: #007bff;
+            /* Blue link color */
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        article a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Frequently Asked Questions</h1>
+    </header>
+    <main>
+        <section id="faq">
+            <h2>FAQ</h2>
+            <article>
+                <h3>What is CryptoInfoHub?</h3>
+                <p>CryptoInfoHub is a platform designed to provide comprehensive and real-time information about various cryptocurrencies. It offers live ticker data, order book visualization, and detailed cryptocurrency information to help users stay informed
+                    and make better trading decisions.</p>
+            </article>
+            <article>
+                <h3>How do I use the live ticker data feature?</h3>
+                <p>To use the live ticker data feature, simply enter the cryptocurrency ticker symbol in the form provided on the homepage and click the "Submit" button. You will receive real-time data including the symbol, 24-hour price, volume, and last
+                    trade price.</p>
+            </article>
+            <article>
+                <h3>What information is displayed in the order book visualization?</h3>
+                <p>The order book visualization displays bids and asks data for a specified cryptocurrency ticker symbol. This includes bid prices, quantities, and numbers, as well as ask prices, quantities, and numbers. It helps users understand the current
+                    market depth and trading sentiment.</p>
+            </article>
+            <article>
+                <h3>What detailed information can I get about a cryptocurrency?</h3>
+                <p>By entering a cryptocurrency ticker symbol, you can access detailed information such as base currency, counter currency, minimum price increment, minimum order size, maximum order size, lot size, status, auction details, and imbalance.
+                    This comprehensive data aids in making informed trading decisions.</p>
+            </article>
+            <article>
+                <h3>Is the data on CryptoInfoHub updated in real-time?</h3>
+                <p>Yes, the data on CryptoInfoHub is fetched from the blockchain API and is updated in real-time to provide the most accurate and current information about cryptocurrencies.</p>
+            </article>
+            <article>
+                <h3>Do I need to create an account to use CryptoInfoHub?</h3>
+                <p>No, you do not need to create an account to access the features of CryptoInfoHub. The platform is freely accessible to all users without any registration requirements.</p>
+            </article>
+            <article>
+                <h3>How do I contact support if I have a question or issue?</h3>
+                <p>If you have any questions or encounter any issues, you can contact our support team by emailing support@cryptoinfohub.com. We are here to help and will respond to your inquiries as soon as possible.</p>
+            </article>
+        </section>
+    </main>
+    <%- include('footer.ejs') %>
+
+</body>
+
+</html>

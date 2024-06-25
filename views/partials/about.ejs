@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - CryptoInfoHub</title>
+    <style>
+        /* Reset default margins and paddings */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* Body styles */
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            /* Light grey background */
+            color: #333;
+            /* Dark grey text color */
+            line-height: 1.6;
+            padding: 20px;
+        }
+        /* Header styles */
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            color: #007bff;
+            /* Blue heading color */
+            margin-bottom: 10px;
+        }
+        /* Main section styles */
+        
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        /* Overview section styles */
+        
+        #overview {
+            background-color: #ffffff;
+            /* White background for overview section */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Soft shadow effect */
+            margin-bottom: 30px;
+        }
+        
+        #overview h2 {
+            color: #007bff;
+            /* Blue heading color */
+            margin-bottom: 20px;
+        }
+        
+        #overview p {
+            color: #666;
+            /* Medium grey text color */
+            line-height: 1.5;
+        }
+        /* Features section styles */
+        
+        #features {
+            background-color: #ffffff;
+            /* White background for features section */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Soft shadow effect */
+        }
+        
+        #features h2 {
+            color: #007bff;
+            /* Blue heading color */
+            margin-bottom: 20px;
+        }
+        /* Article styles */
+        
+        article {
+            margin-bottom: 30px;
+        }
+        
+        article h3 {
+            color: #0056b3;
+            /* Dark blue heading color */
+            margin-bottom: 10px;
+        }
+        
+        article p {
+            color: #666;
+            /* Medium grey text color */
+            line-height: 1.5;
+        }
+        
+        article strong {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>About This Project</h1>
+    </header>
+    <main>
+        <section id="overview">
+            <h2>Overview</h2>
+            <p>Welcome to the <strong>CryptoInfoHub</strong>! This platform is designed to provide comprehensive and real-time information about various cryptocurrencies. Whether you're a seasoned trader or a crypto enthusiast, our website offers valuable
+                insights into the world of digital currencies.</p>
+        </section>
+        <section id="features">
+            <h2>Key Features</h2>
+            <article>
+                <h3>Live Ticker Data</h3>
+                <p><strong>Description:</strong> Enter a cryptocurrency ticker symbol to retrieve live data such as symbol, price (24h), volume (24h), and last trade price.</p>
+                <p><strong>Benefit:</strong> Track specific cryptocurrencies and monitor their performance over time, helping you stay updated with the latest market trends.</p>
+            </article>
+            <article>
+                <h3>Order Book Visualization</h3>
+                <p><strong>Description:</strong> Fetch the order book data for a specific cryptocurrency ticker symbol. The platform displays bids and asks data, including prices, quantities, and numbers, in a structured format.</p>
+                <p><strong>Benefit:</strong> Understand current market depth and trading sentiment, providing insights into buy and sell orders for informed decision-making.</p>
+            </article>
+            <article>
+                <h3>Ticker Information Display</h3>
+                <p><strong>Description:</strong> Fetch detailed information about a cryptocurrency symbol by entering its ticker. The website displays information such as base currency, counter currency, minimum price increment, minimum order size, maximum
+                    order size, lot size, status, auction details, and imbalance.</p>
+                <p><strong>Benefit:</strong> Access comprehensive details about specific cryptocurrencies, aiding users in making informed trading decisions.</p>
+            </article>
+        </section>
+    </main>
+    <%- include('footer.ejs') %>
+
+</body>
+
+</html>

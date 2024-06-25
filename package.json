@@ -1,6 +1,7 @@
 {
-    "name": "capstone_project",
+    "name": "api_based_project",
     "version": "1.0.0",
+    "description": "api based project",
     "main": "index.js",
     "type": "module",
     "scripts": {
@@ -8,8 +9,8 @@
     },
     "author": "tanu sharma",
     "license": "ISC",
-    "description": "",
     "dependencies": {
+        "axios": "^1.7.2",
         "ejs": "^3.1.10",
         "express": "^4.19.2"
     }
